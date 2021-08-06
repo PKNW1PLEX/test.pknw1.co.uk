@@ -11,7 +11,8 @@ jobs:
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: | 
-            cd ${{ secrets.WWWROOT }}/ && ls -la
+            cd ${{ secrets.WWWROOT }}/
+            ls -la
           host: ${{ secrets.KS2_HOST }}
           port: ${{ secrets.KS2_PORT }}
           username: ${{ secrets.KS2_USER }}
