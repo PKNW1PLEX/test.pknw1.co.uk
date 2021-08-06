@@ -13,7 +13,7 @@ jobs:
           command: | 
             cd ${{ secrets.WWWROOT }}
             if ! [ -d releases-${{ secrets.URL }} ]; then mkdir releases-${{ secrets.URL }}; fi
-            git clone https://github.com/$GITHUB_REPOSITORY releases-${{ secrets.URL }}/$(date +%d%m%y%H%M)
+            git clone https://github.com/PKNW1PLEX/${{ secrets.URL }}.git releases-${{ secrets.URL }}/$(date +%d%m%y%H%M)
           host: ${{ secrets.KS2_HOST }}
           port: ${{ secrets.KS2_PORT }}
           username: ${{ secrets.KS2_USER }}
