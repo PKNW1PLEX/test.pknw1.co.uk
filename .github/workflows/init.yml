@@ -12,8 +12,11 @@ jobs:
         with:
           command: | 
             cd ${{ secrets.WWWROOT }}
-            if ! [ -d releases-${{ secrets.URL }} ]; then mkdir releases-${{ secrets.URL }}; fi
-            git clone https://github.com/PKNW1PLEX/${{ secrets.URL }}.git releases-${{ secrets.URL }}/$(date +%d%m%y%H%M)
+            if ! [ -d releases-${{ secrets.URL }} ]; then mkdir releases-${{ secrets.URL }}; fi;
+            NOW=$(date +%d%m%y%H%M)
+            git clone https://github.com/PKNW1PLEX/${{ secrets.URL }}.git releases-${{ secrets.URL }}/$NOW #(date +%d%m%y%H%M)
+            if [ -f beta.${{ secrets.URL }} ]; then rm beta.${{ secrets.URL }}; fi
+            ln -s releases-${{ secrets.URL }}/$NOW beta.${{ secrets.URL }}
           host: ${{ secrets.KS2_HOST }}
           port: ${{ secrets.KS2_PORT }}
           username: ${{ secrets.KS2_USER }}
